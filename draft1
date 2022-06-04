@@ -1,0 +1,38 @@
+/my first draft 
+
+Input /getting start range from user
+Store ORG_X /Stores value in AC to var X
+Store X /have seperate addresses to maintain orig values
+Input /getting end range from user
+Store ORG_Y /Stores value in AC to var Y
+Store Y
+
+Subt X /subtracts X from Y
+
+JnS CheckEqual /enter subroutine CheckEqual
+Load True /testing to see if we can skip a line based on value
+Skipcond 400 /only goes to next line if numbers are equal (800 = skip if AC>0)
+Jns Adder
+JnS Division
+Halt /end prgrm
+
+/SUBROUTINE to add numbers
+Adder, HEX 001
+	Load X
+    Add Y
+    Store Total
+    Output
+bEnd, JumpI Adder
+
+/SUBROUTINE to check if two numbers are equal
+CheckEqual, HEX 000
+If, Skipcond 400 /If result = 0 then #s are equal
+	Jump Equal
+Else, Load One /Otherwise result not equal
+	Store True
+	Output
+	Jump aEnd
+Equal, Load Zero
+	Store True
+	Output
+aEnd, JumpI CheckEqual
