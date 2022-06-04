@@ -1,0 +1,28 @@
+/first I wanted to figure out how to compare two numbers 
+
+Input /getting start range from user
+Store X /Stores value in AC to location & calls it X
+Input /getting end range from user
+Store Y /Stores value in AC to location & calls it Y
+
+Subt X /subtracts X from Y (AC<--AC-X) so current value loaded is Y-X 
+
+JnS CheckEqual /stores location of subroutine in location "A" and jumps to "A+1"
+Load True /testing to see if we can skip a line based on value
+Skipcond 800 /only prints double if numbers are equal (800 = skip if AC>0)
+Output
+Halt /end prgrm
+
+/SUBROUTINE 
+CheckEqual, HEX 000 /need value for flag 
+If, Skipcond 400 /If result = 0 then #s are equal
+	Jump Equal
+/Otherwise result not equal
+Else, Load One
+	Store True
+	Output
+	Jump End
+Equal, Load Zero
+	Store True
+	Output
+End, JumpI CheckEqual
