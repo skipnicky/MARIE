@@ -1,0 +1,48 @@
+Input
+Store X /Stores value in AC to var X
+Store Cur
+Input
+Store Y
+
+start, JnS DivideLoop
+Load X
+Skipcond 800
+JnS Increment
+Load Cur
+Add One
+Jump start
+
+/SUBROUTINE to divide w remainder
+DivideLoop, Load X
+
+If, Subt Y
+	Skipcond 000 /if x-y is negative we know devision is complete
+    Jump Else
+Then, Jump EndIf
+Else, Store X
+	Load Counter
+    Add One
+    Store Counter
+    Output
+    Jump DivideLoop
+EndIf, Load Counter
+	JumpI DivideLoop
+
+/SUBROUTINE to add to variable
+Increment, Load Total
+	Subt Y
+	Skipcond 800
+    Halt
+Otherwise, Load Total
+	Add Cur
+    JumpI Increment
+
+
+/VARIABLE DECLERATION
+X, DEC 0
+Cur, DEC 0
+Y, DEC 0
+Total, DEC 0
+Counter, DEC 0
+One, DEC 1
+
