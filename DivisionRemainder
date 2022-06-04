@@ -1,0 +1,29 @@
+/getting values from user to store 
+Input
+Store X
+Input
+Store Y
+
+Loop, Load X
+If, Subt Y /Subtracts value in AC at address Y into AC, AC <-- AC - Y
+	Skipcond 000 /if x-y is negative devision is complete 
+    Jump Else
+Then, Jump EndIf 
+Else, Store X
+	Load Counter /counter checks how many times we were able to perform X-Y 
+    Add One
+    Store Counter
+    Jump Loop
+EndIf, Load Counter
+  Output
+  Load X /this value is now what we have leftover from our org value 
+  Output
+  Halt /stop pgrm
+
+/Declaring Variables
+X, DEC 0
+Y, DEC 0
+Counter, DEC 0
+One, DEC 1 
+
+/I basically took all this code from stackoverflow and commented it lol
